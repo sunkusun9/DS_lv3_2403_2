@@ -18,3 +18,66 @@
 |5|문제 5|15시 30분| 16시 30분|
 |6|문제 6|16시 40분| 17시 30분|
 
+## 시험장 환경을 가상 환경으로 구축
+
+PC에 있는 Python 환경을 유지하면서, 시험장 환경의 Python환경을 별도로 구축하는 방법입니다.
+
+OS: Windows 10 (Windows 11도 가능하지만 결과에 차이가 있을 수 있습니다.)
+
+<div style="border: 1px solid #ddd; padding: 12px; margin-top: 10px;">
+
+1. [패키지](https://drive.google.com/file/d/1zhyIoMbSq7ZTwf6AnwiIIXtQ1qMqEWlK/view?usp=drive_link) 압축 파일을 다운로드 받습니다.  C:\패키지 에 압축을 풉니다.
+
+   (C:\패키지에 위치할 필요는 없지만, 이후 설명은 C:\패키지 를 기준으로 합니다.)
+
+
+2. 패키지에 안에 있는 시험장 환경의 python(3.7.4 version) 설치 파일 python-3.7.4-amd64.exe을 실행시킵니다.
+
+
+3. Python 설치 경로를 C:\python37로 합니다. (마찬가지로 따를 필요는 없지만, 설명은 C:\python37 를 기준으로 합니다.)
+
+
+4. Python 가상 환경 구축
+
+- 명령프롬프트를 실행시킵니다.(Windows 실행 → cmd.exe)
+
+
+- 설치된 버젼의 python 실행 파일을 사용하여 python37이란 이름으로 가상환경을 만듭니다.
+
+```cmd
+    C:\python37\python -m venv python37
+```
+
+    - 성공하면 python37 경로가 생깁니다.
+
+
+5. 패키지 설치
+
+```
+    python37\Scripts\activate
+    cd c:\패키지
+    pip install --upgrade --no-index --find-links . pip
+    pip install --no-index --find-links . -r requirements.txt
+```
+
+-------------------------------------------------------------------
+    
+</div>
+
+가상 환경 전환 
+
+    일단 가상환경이 구축이 되면, 이후에는 활성화를 통해 환경 전환이 가능합니다.
+
+```
+    python37\Scripts\activate 
+```
+
+----------------------------------
+
+가상 환경 해제
+
+    가상환경 이전의 환경으로 돌아옵니다.
+
+```
+    deactivate
+```
